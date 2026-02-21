@@ -63,7 +63,7 @@ Visit `http://127.0.0.1:5000` in your web browser to view the application.
 
 ## Testing
 
-To run the tests, use:
+To run the tests:
 
 ```
 python -m unittest discover -s tests
