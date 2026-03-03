@@ -22,5 +22,22 @@ class AppTestCase(unittest.TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertIn(b'Course Details', response.data)
 
+    def test_contact_page(self):
+        response = self.app.get('/contact')
+        self.assertEqual(response.status_code, 200)
+
+    def test_contact_page_content(self):
+        response = self.app.get('/contact')
+        self.assertIn(b'Get in Touch', response.data)
+        self.assertIn(b'Connect With Us', response.data)
+
+    def test_contact_page_email(self):
+        response = self.app.get('/contact')
+        self.assertIn(b'contact@courseexplainer.com', response.data)
+
+    def test_contact_nav_link(self):
+        response = self.app.get('/')
+        self.assertIn(b'/contact', response.data)
+
 if __name__ == '__main__':
     unittest.main()

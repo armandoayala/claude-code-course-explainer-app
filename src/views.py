@@ -5,3 +5,6 @@ def index():
 
 def course(course_id):
     return render_template('course.html', course_id=course_id)
+
+def contact():
+    return render_template('contact.html')
