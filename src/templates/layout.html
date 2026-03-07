@@ -4,28 +4,31 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>{% block title %}Course Explainer{% endblock %}</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
 </head>
 <body>
   <header class="site-header">
     <div class="header-inner">
-      <h1 class="site-title">Course Explainer</h1>
+      <a href="{{ url_for('index') }}" class="site-title">Course Explainer</a>
       <nav>
         <ul class="main-nav">
           <li><a href="{{ url_for('index') }}">Home</a></li>
-          <li><a href="{{ url_for('course', course_id=1) }}">Course Details</a></li>
+          <li><a href="{{ url_for('course', course_id=1) }}">Courses</a></li>
           <li><a href="{{ url_for('contact') }}">Contact</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <main class="container">
+  <main class="main-content">
     {% block content %}{% endblock %}
   </main>
 
   <footer class="site-footer">
-    <div class="footer-inner">© 2023 Course Explainer App</div>
+    <div class="footer-inner">© 2026 Course Explainer App</div>
   </footer>
 </body>
 </html>

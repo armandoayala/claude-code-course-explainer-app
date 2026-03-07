@@ -1,22 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
-    <title>Course Explainer</title>
-</head>
-<body>
-    {% include 'layout.html' %}
-    <div class="container">
-        <h1>Welcome to the Course Explainer</h1>
-        <p>This application provides an overview of various courses available.</p>
-        <h2>Available Courses</h2>
-        <ul>
-            <li><a href="{{ url_for('course', course_id=1) }}">Course 1</a></li>
-            <li><a href="{{ url_for('course', course_id=2) }}">Course 2</a></li>
-            <li><a href="{{ url_for('course', course_id=3) }}">Course 3</a></li>
-        </ul>
+{% extends 'layout.html' %}
+
+{% block title %}Course Explainer - Home{% endblock %}
+
+{% block content %}
+<section class="hero">
+  <div class="hero-content">
+    <h1 class="hero-title">Learn Something New Today</h1>
+    <p class="hero-subtitle">Explore our curated collection of courses designed to help you build real skills.</p>
+    <a href="#courses" class="btn btn-hero">Browse Courses</a>
+  </div>
+</section>
+
+<section class="courses-section" id="courses">
+  <h2 class="section-title">Available Courses</h2>
+  <div class="course-grid">
+    {% for course in courses %}
+    <div class="course-card">
+      <div class="course-card-body">
+        <h3 class="course-card-title">{{ course.title }}</h3>
+        <p class="course-card-desc">{{ course.description }}</p>
+        <div class="course-meta">
+          <span class="meta-badge">{{ course.instructor }}</span>
+          <span class="meta-badge">{{ course.duration }}</span>
+        </div>
+      </div>
+      <div class="course-card-footer">
+        <a href="{{ url_for('course', course_id=loop.index) }}" class="btn btn-outline">View Course</a>
+      </div>
     </div>
-</body>
-</html>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}
